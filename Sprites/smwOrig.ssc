@@ -1,0 +1,35 @@
+01	10	A lakitu sprite that flies around and follows Mario on the overworld screen. The sprite was never used in the original game.
+02	10	A blue bird sprite that flies around and follows Mario on the overworld screen. The sprite was never used in the original game.
+03	10	A Cheep Cheep that jumps out of water. Intended to be spawned during path movement scripts. Placing it directly into the submap will cause it to activate immediately.
+04	10	A small piranha plant. The sprite was never used in the original game.
+05	10	A moving cloud that scrolls on the overworld. These are spawned randomly on the original main map, but you could enable that behavior on your other maps.
+06	10	A koopa kid that will attempt to ambush Mario when he gets near, forcing the player to enter a level. If the player passes the level, nothing negative should happen. But, if the player dies in the level or uses Start-Select to exit, some sort of special script should be run in the corresponding level's exit script. Intended to be spawned during path movement scripts. Placing it directly into the submap will cause it to activate immediately, most likely missing Mario.
+07	10	A smoke sprite that draws some smoke puffs meant to represent chimney smoke from Yoshi's house.
+08	10	The sign for Bowser's castle.
+09	10	A sprite of Bowser flying around.
+0A	10	A ghost sprite that floats around ghost houses.
+0B	10	The sparkle that appears when a level tile appears during an event. Intended to be spawned during event scripts. Placing it directly into the submap will cause it to activate immediately.
+0C	10	An ! block spawned during a switch palace event. Intended to be spawned during path movement scripts. Placing it directly into the submap will cause it to activate immediately.
+0D	10	A variable sprite tile used during an event script for the path fade effect. Spawning it directly is not recommended. If the path fade effect is disabled, this sprite deletes itself.
+0E	10	A smoke effect intended for event scripts that destroy a castle, fortress, or switch palace. Placing it directly into the submap will cause it to activate immediately.
+0F	10	A water splash effect spawned by Cheep Cheeps. Placing it directly into the submap will cause it to activate immediately.
+10	10	A generator sprite that creates the lightning animation seen in Valley of Bowser.
+11	10	A generator sprite spawns random clouds seen on the main map.
+
+01	12	1,13,401 6,13,401 2,19,401 5,19,401 0,1,400 0,64,416 
+02	12	0,1,403 8,2,404 0,64,416 
+03	12	0,0,405 
+04	12	0,1,406 
+05	12	0,1,407,15,1,408 
+06	12	0,0,409 
+07	12	8,-6,402 12,3,401 8,11,401 
+08	12	0,9,40A 16,9,40B 
+09	12	-8,1,40C 
+0A	12	0,-7,40D 
+0B	12	0,0,40E 
+0C	12	0,0,410 
+0D	12	0,0,411 
+0E	12	-4,-4,412 4,-4,413 -4,4,414 4,4,415 
+0F	12	0,0,40F 
+10	12	0,0*Lightning\nGenerator*
+11	12	0,0*  Cloud  \nGenerator*

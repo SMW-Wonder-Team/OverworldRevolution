@@ -1,0 +1,146 @@
+
+V1.1
+- Updated the patch to use asar 1.90.
+
+- I fixed a bug where I accidentally broke the special world palette loading when I was trying to implement the dark screen effect of the continue/end menu.
+
+- I fixed a bug where if the camera focus point was at least a screen away, it would snap onto the focus point earlier than it should.
+
+- I fixed a bug where a single black pixel would remain on screen after closing a prompt.
+
+- Adjusted Mario's spawn position when warping on the overworld so he's 6 pixels higher to match the position he stands on levels.
+
+- Adjusted the path from the Cheese Bridge Area -> Lemmy's Castle pipe to Cheese Bridge Area so Mario moves at a better angle.
+
+- Adjusted the path from Forest of Illusion 4 to Forest Ghost House, as Mario moved up 1 tile more than he should.
+
+- Gave Mario's swimming poses a Y disp. This allowed me to remove the slight diagonal angle Mario walks when walking towards a water level.
+
+- Added a feature to allow editing the castle destruction text without needing Lunar Magic.
+
+- Added the ability to set which levels trigger the ending and castle destruction cutscenes.
+
+- Added some script code for exiting level 013 that makes the secret exit trigger if a boss is killed. This is to demonstrate how to implement this functionality in any of your level exit scripts.
+
+- Made the patch delete all the vanilla and LM overworld data upon first applying the patch. Before doing so, a warning will be given to make sure you've backed up the overworld.
+
+- Added a setting that increases the available events and translevel slots from 96/120 to 256. Although, the code can support far more if you allocate more RAM to the relevant tables.
+
+- Made it possible to edit the message box text without needing Lunar Magic.
+
+- Implemented an optional hijack that enables the file select exit counter to display either a 3 or 5 digit exit count.
+
+- The patch now plays nice with PIXI, AddmusicK and UberASM Tool 2.0.
+
+- Made it so that overworld sprites now properly despawn when offscreen.
+
+- Tweaked the overworld sprite code to make is possible to insert them in other banks.
+
+- Fixed an oversight where the silent event script for Morton's Castle didn't properly close the door to Vanilla Dome when this level hasn't been beaten yet.
+
+- Added some code to the silent event script for Forest Ghost House to spawn a boo if either event leading to this level has been triggered.
+
+- Made it possible to insert script code in multiple banks.
+
+- Added some new script opcodes that function as JSL/RTL/JML to allow jumping to other banks within scripts.
+
+- Added a script opcode for setting both the path reveal speed and sound used when revealing tiles. The latter is the functionality given by Kevin's "Event/Step Specific Tile Reveal SFX" patch.
+
+- Added a script opcode that allows you to override the current overworld music. This is intended to give similar functionality as smkdan's "Multiple Songs on Main Map" patch.
+
+- Added a script opcode that allows changing the player movement speed. The functionality is similar to wye/carol's "Overworld Speed Changer" patch, except it's way more flexible.
+
+- Made several parameters for various script opcodes into strings to make it easier to understand what the values mean.
+
+- Disabled LM's Global ExAnimations for all the vanilla overworld .mwl files, since you shouldn't use global ExAnimations for the overworld as they're shared between levels now. If you need those slots, press Ctrl+Alt+F7 in the main editor to enable sacrificing the global slots for more local ones.
+
+- Enabled Smart Spawn and the medium vertical despawn range for all the vanilla overworld .mwl files.
+
+- Fixed a bug where the No-Yoshi Cutscenes would sometimes warp you to the wrong level.
+
+- Tweaked the path movement code and certain scripts to lessen the chances of Mario doing rapid turns while moving in a quarter circle.
+
+- Fixed a bug where overworld sprites didn't initialize their Z speed or position when spawned from screen scrolling.
+
+- Made it possible to disable special world palette loading for maps that don't need an alternate palette.
+
+- Added a JSL to all the "Standing On X" scripts that runs code while you're idling on a level tile. This allows you to implement things that should only run in this situation, such as bringing up menus.
+
+- Implemented the LM option to have Luigi's position saved separately from Mario's.
+
+- Implemented a couple more macros to simplify a few scripted actions, such as the Switch Palace event and entering a level with the face buttons.
+
+- Tweaked the player switch code so the player switch happens while the screen is black instead of right when it fades out.
+
+- Added more documentation to the defines intended to be tweaked by the user.
+
+- Made various setting defines that previously did nothing function now.
+
+- Made it possible to display border Mario and the life counter when the border is disabled.
+
+- Added a script opcode that allows you to display a text box on the overworld.
+
+- Added a new setting to disable the intro level.
+
+- Made it so that the submap you start on has no influence on the intro level sublevel that gets loaded.
+
+- Implemented a new "Game state flags" RAM address that's saved to SRAM that tracks certain things about the game as well as enabling certain behaviors. Specifically:
++ Which switch palaces are activated
++ Whether Yoshi has been saved (ie. If he has displayed his textbox upon first getting him)
++ Whether Monty Moles emerge slower like they do on Yoshi's Island.
++ Whether Hammer Bros. throw their hammers slower like they do on the Main Map levels.
++ Whether the create block uses the Larry's Castle path instead of the Roy's Castle one.
++ Whether sprite 32 (Ledge Dry Bones) throws bones, like it does in Bowser's Castle
++ Whether a level has Chocolate Island 2's gimmick.
++ Whether each of the 3 individual effects of beating the special world are active.
++ Whether a level displays "Mario Start!" when entering it.
++ Whether riding Yoshi affects what message gets displayed.
+All but the switch palaces, "Yoshi has been saved" flag, and the 3 special world flags are cleared when leaving a level.
+
+- Levels that have the flag set for Yoshi to display alternate messages when ridden is now more flexible. Instead of displaying message 1 or message 2, the game displays message ID + 1.
+
+- Tweaked the overworld warping code so it no longer needs to mess with $19B8/$19D8.
+
+- The Yoshi coins, 1up checkpoints, and 3-up moons collection tables are now merged into $1EA2, which also means they're now saved to SRAM (though you can disable the latter if you want the vanilla behavior) and their respective tables are free RAM now.
+
+- Implemented 16-bit versions of various load/store/bit manipulation script opcodes.
+
+- Sprites are now capable of fully utilizing the OAM, as sprites now use MaxTile if using the SA-1 patch. Or a port of it that lacks legacy mode if not using the SA-1.
+
+- Made the overworld player sprites dynamic to save on VRAM space.
+
+- Fixed a bug where the sprite parsing routine would exit prematurely if 1 sprite was spawned. This would prevent multiple sprites on the same column from spawning.
+
+- Fixed a few bugs with the SA-1 implementation.
+
+- Tweaked the stripe image for clearing a text box to only erase the part of the layer 3 tilemap it actually uses. This is so it doesn't mess up the overworld border. Note that this is only done if !Define_SMW_MessageText_UsingAltMessagingSystem is set to !FALSE.
+
+- Selecting "Continue" on a game over no longer causes the Mario/Luigi to visually update immediately after.
+
+- The camera now locks in place during the star warp animation.
+
+- The patch now prints out the amount of freespace it used, how much space remains in bank 04, and whether certain resources are detected.
+
+- It's now possible to assign any No-Yoshi intro cutscene to any level regardless of tileset.
+
+- Added a few defines for changing the appearance of the file select exit counts.
+
+- Made the patch throw an error if LM's custom level palette hijacks are not inserted in order to prevent a game crash.
+
+- Adjusted the offsets for the camera focus on Mario so it matches with vanilla.
+
+- Fixed a bug that caused non-layer 2 levels to load a glitchy background.
+
+- Fixed a bug where LM would mess up the patch each time you inserted custom graphics.
+
+- Improved the implementation of the silent event scripts. They're now based on the map instead of individual levels.
+
+- Fixed a bug where custom layer 3 ExGFX would not load on overworlds.
+
+- Rewrote the life counter display routine so it doesn't conflict with level names.
+
+- Level names and the scroll arrows can now be displayed with sprite tiles instead of layer 3 if desired.
+
+- Fixed an oversight where layer 3 was always fixed on screen no matter what settings you used for layer 3 scroll.
+
+- Made using L+R to re-enter destroyed castles/fortresses require holding both buttons instead of pressing both at the exact same time.
