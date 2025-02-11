@@ -1,3 +1,6 @@
+#Notice
+Using overworld Revolution is still rather hacky along with Lunar Magic. A better option would be to use the WIP framework me (Soul), YF and anoni are developing
+
 Thank you for downloading Overworld Revolution! This may be a complicated patch to use, but great things await if you can master using it. Compared to before, the possibilities for your custom overworld are virtually endless with this patch.
 If you need assistance, feel free to ask in the release thread on SMWCentral's "Resources & Tool Releases" forum or message me on Discord (I'm yoshifanatic1).
 
